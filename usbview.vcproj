@@ -39,7 +39,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="D:\Git\usbview\inc\h"
+				AdditionalIncludeDirectories="D:\GitHub\usbview\inc\h"
 				PreprocessorDefinitions="WINNT"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -61,7 +61,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="cfgmgr32.lib setupapi.lib comctl32.lib"
-				AdditionalLibraryDirectories="D:\Git\usbview\inc\lib"
+				AdditionalLibraryDirectories="D:\GitHub\usbview\inc\lib"
 				GenerateDebugInformation="true"
 				TargetMachine="1"
 			/>

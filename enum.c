@@ -541,7 +541,7 @@ EnumerateHub (
     }
 
     // Allocate some space for a USB_NODE_INFORMATION structure for this Hub,
-    //
+    // 分配空间给集线器相关的 USB_NODE_INFORMATION 结构体
     hubInfo = (PUSB_NODE_INFORMATION)ALLOC(sizeof(USB_NODE_INFORMATION));
 
     if (hubInfo == NULL)
@@ -613,12 +613,12 @@ EnumerateHub (
     }
 
     // Create the full hub device name
-    //
+    // 生成完整集线器设备名
     _tcscpy_s(deviceName, deviceNameSize, _T("\\\\.\\"));
     _tcscat_s(deviceName, deviceNameSize, HubName);
 
     // Try to hub the open device
-    //
+    // 尝试打开集线器设备
     hHubDevice = CreateFile(deviceName,
                             GENERIC_WRITE,
                             FILE_SHARE_WRITE,
@@ -822,9 +822,9 @@ EnumerateHubPorts (
     int   icon;
 
     // Loop over all ports of the hub.
-    //
+    // 遍历集线器上的所有端口
     // Port indices are 1 based, not 0 based.
-    //
+    // 端口索引从1开始(并非从0开始)
     for (index=1; index <= NumPorts; index++)
     {
         ULONG nBytesEx;
@@ -947,7 +947,7 @@ EnumerateHubPorts (
         }
 
         // If there is a device connected, get the Device Description
-        //
+        // 如果此处有设备连接则获取设备描述
         deviceDesc = NULL;
         if (connectionInfoEx->ConnectionStatus != NoDeviceConnected)
         {
@@ -1213,7 +1213,7 @@ PTSTR GetRootHubName (
     }
 
     // Allocate space to hold the Root Hub name
-    //
+    // 分配空间保存根集线器名字
     nBytes = rootHubName.ActualLength;
 
     rootHubNameW = ALLOC(nBytes);
@@ -1225,7 +1225,7 @@ PTSTR GetRootHubName (
     }
 
     // Get the name of the Root Hub attached to the Host Controller
-    //
+    // 获取连接主控制器的根集线器的名字
     success = DeviceIoControl(HostController,
                               IOCTL_USB_GET_ROOT_HUB_NAME,
                               NULL,
@@ -1242,12 +1242,12 @@ PTSTR GetRootHubName (
     }
 
     // Convert the Root Hub name
-    //
+    // 转换根集线器名字
     rootHubNameA = WideStrToMultiStr(rootHubNameW->RootHubName);
 
     // All done, free the uncoverted Root Hub name and return the
     // converted Root Hub name
-    //
+    // 释放未转换的根集线器名字并返回转换后的根集线器名字
     FREE(rootHubNameW);
 
     return rootHubNameA;
